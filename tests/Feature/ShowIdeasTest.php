@@ -71,6 +71,5 @@ class ShowIdeasTest extends TestCase
         $response->assertSee($ideaEleven->title);
         $response->assertDontSee($ideaOne->title);
 
-
     }
 }
