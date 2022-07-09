@@ -83,7 +83,7 @@
                                 type="submit"
                                 class="flex items-center justify-center w-1/2 h-9 text-xs bg-blue font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3 text-white"
                             >
-                                <span class="ml-2"> Submit</span>
+                                <span>Submit</span>
                             </button>
                         </div>
                     </form>
