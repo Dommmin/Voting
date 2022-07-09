@@ -14,9 +14,9 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-gray-900 text-sm bg-gray-background">
-        <header class="flex items-center justify-between px-8 py-4">
+        <header class="flex flex-col md:flex-row items-center justify-between px-8 py-4">
             <a href="#"><img src="{{ asset('img/logo.svg') }}" alt="logo"></a>
-            <div class="flex items-center">
+            <div class="flex mt-2 md:mt-0 items-center">
                 @if (Route::has('login'))
                     <div class="px-6 py-4">
                         @auth
@@ -44,11 +44,9 @@
             </div>
         </header>
 
-        <main class="container mx-auto max-w-custom flex">
-            <div class="w-70 mr-5">
-                <div
-                    class="bg-white border-2 border-blue rounded-xl mt-16"
-                >
+        <main class="container mx-auto max-w-custom flex flex-col md:flex-row">
+            <div class="w-70 mx-auto md:mx-0 md:mr-5">
+                <div class="bg-white md:sticky md:top-8 border-2 border-blue rounded-xl mt-16">
                     <div class="text-center px-6 py-2 pt-6">
                         <h3 class="font-semibold text-base">Add an idea</h3>
                         <p class="text-xs mt-4">Let us know what you would like and we'll take a look over!</p>
@@ -89,8 +87,8 @@
                     </form>
                 </div>
             </div>
-            <div class="w-175">
-                <nav class="flex items-center justify-between text-xs">
+            <div class="w-full px-2 md:px-0 md:w-175">
+                <nav class="hidden md:flex items-center justify-between text-xs">
                     <ul class="flex uppercase font-semibold space-x-10 border-b-4 pb-3">
                         <li><a href="#" class="border-b-4 pb-3 border-blue">All ideas (87)</a></li>
                         <li><a href="#" class="text-gray-400 transition duration-150 ease-in border-b-4 pb-3 hover:border-blue">Considering (6)</a></li>
