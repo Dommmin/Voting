@@ -11,7 +11,7 @@ class IdeaController extends Controller
     public function index()
     {
         return view('idea.index', [
-            'ideas' => Idea::with('user', 'category')
+            'ideas' => Idea::with('user', 'category', 'status')
                 ->simplePaginate(Idea::PAGINATION_COUNT),
         ]);
     }
@@ -37,12 +37,7 @@ class IdeaController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Idea  $idea
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Idea $idea)
     {
         return view('idea.show', [
