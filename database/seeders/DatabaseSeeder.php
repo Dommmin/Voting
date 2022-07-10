@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Vote;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,8 +21,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory()->create([
-           'name' => 'Andre',
-           'email' => 'andre_madaran@hotmail.com',
+            'name' => 'Andre',
+            'email' => 'andre_madaran@hotmail.com',
+            'password' => Hash::make('123456'),
         ]);
 
         User::factory(19)->create();
