@@ -34,6 +34,15 @@ class Idea extends Model
         return $this->belongsToMany(User::class, 'votes');
     }
 
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title',
+            ],
+        ];
+    }
+
     public function isVotedByUser(?User $user)
     {
         if (!$user) {
@@ -45,12 +54,19 @@ class Idea extends Model
             ->exists();
     }
 
-    public function sluggable(): array
+    public function vote(User $user)
     {
-        return [
-            'slug' => [
-                'source' => 'title',
-            ],
-        ];
+        Vote::create([
+           'idea_id' => $this->id,
+           'user_id' => $user->id,
+        ]);
+    }
+
+    public function removeVote(User $user)
+    {
+        Vote::where('idea_id', $this->id)
+            ->where('user_id', $user->id)
+            ->first()
+            ->delete();
     }
 }
