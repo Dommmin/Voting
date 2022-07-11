@@ -4,7 +4,6 @@ namespace App\Http\Livewire;
 
 use App\Models\Category;
 use App\Models\Idea;
-use App\Models\Vote;
 use Livewire\Component;
 
 class CreateIdea extends Component
@@ -15,7 +14,7 @@ class CreateIdea extends Component
 
     protected $rules = [
       'title' => 'required|min:4',
-      'category' => 'required|integer',
+      'category' => 'required|integer|exists:categories,id',
       'description' => 'required|min:4',
     ];
 
