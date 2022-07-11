@@ -13,6 +13,8 @@
         :votesCount="$votesCount"
     />
 
+    <livewire:edit-idea />
+
     <div class="comments-container relative space-y-6 md:ml-22 my-8 mt-1 pt-4">
         <div class="comment-container relative bg-white rounded-xl flex cursor-pointer mt-4">
             <div class="flex flex-col md:flex-row flex-1 px-4 py-6">
@@ -39,14 +41,16 @@
                             class="flex items-center space-x-2"
                             x-data="{ isOpen: false }"
                         >
-                            <button
-                                @click="isOpen = !isOpen"
-                                type="button"
-                                class="relative bg-gray-100 hover:bg-gray-200 border rounded-full h-7 transition duration-150 ease-in py-2 px-3"
-                            >
-                                <svg fill="currentColor" width="24" height="6">
-                                    <path d="M2.97.061A2.969 2.969 0 000 3.031 2.968 2.968 0 002.97 6a2.97 2.97 0 100-5.94zm9.184 0a2.97 2.97 0 100 5.939 2.97 2.97 0 100-5.939zm8.877 0a2.97 2.97 0 10-.003 5.94A2.97 2.97 0 0021.03.06z" style="color: rgba(163, 163, 163, .5)" />
-                                </svg>
+                            <div class="relative">
+                                <button
+                                    @click="isOpen = !isOpen"
+                                    type="button"
+                                    class="relative bg-gray-100 hover:bg-gray-200 border rounded-full h-7 transition duration-150 ease-in py-2 px-3"
+                                >
+                                    <svg fill="currentColor" width="24" height="6">
+                                        <path d="M2.97.061A2.969 2.969 0 000 3.031 2.968 2.968 0 002.97 6a2.97 2.97 0 100-5.94zm9.184 0a2.97 2.97 0 100 5.939 2.97 2.97 0 100-5.939zm8.877 0a2.97 2.97 0 10-.003 5.94A2.97 2.97 0 0021.03.06z" style="color: rgba(163, 163, 163, .5)" />
+                                    </svg>
+                                </button>
                                 <ul
                                     x-cloak
                                     x-show.transition.origin.top.left="isOpen"
@@ -57,7 +61,8 @@
                                     <li><a href="#" class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in">Mark as Spam</a></li>
                                     <li><a href="#" class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in">Delete Post</a></li>
                                 </ul>
-                            </button>
+                            </div>
+
                         </div>
                     </div>
                 </div>
