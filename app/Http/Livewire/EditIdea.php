@@ -29,9 +29,11 @@ class EditIdea extends Component
 
     public function updateIdea()
     {
-        if (auth()->guest() || auth()->user()->cannot('update', $this->idea)) {
+        if (auth()->guest() || auth()->user()->cannot('update', $this->idea))
+        {
             abort(403);
         }
+
         $this->validate();
 
         $this->idea->update([

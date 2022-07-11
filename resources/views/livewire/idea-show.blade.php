@@ -47,7 +47,7 @@
                                     <li>
                                         <a
                                             href="#"
-                                            @click="isOpen = false
+                                            @click.prevent="isOpen = false
                                                 $dispatch('custom-show-edit-modal')
                                             "
                                             class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in"
@@ -56,7 +56,20 @@
                                         </a>
                                     </li>
                                 @endcan
-                                <li><a href="#" class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in">Delete Idea</a></li>
+
+                                @can('delete', $idea)
+                                    <li>
+                                        <a
+                                            href="#"
+                                            @click.prevent="isOpen = false
+                                            $dispatch('custom-show-delete-modal')
+                                        "
+                                            class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in"
+                                        >
+                                            Delete Idea
+                                        </a>
+                                    </li>
+                                @endcan
                                 <li><a href="#" class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in">Mark as Spam</a></li>
                             </ul>
                         </div>
