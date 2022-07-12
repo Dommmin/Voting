@@ -29,7 +29,7 @@
 
     <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
-    <div class="fixed z-10 inset-0 overflow-y-auto">
+    <div class="fixed z-20 inset-0 overflow-y-auto">
         <div
             x-show.transition.opacity="isOpen"
             class="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0"
