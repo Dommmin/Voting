@@ -13,8 +13,8 @@
     x-show="isOpen"
     @keydown.escape.window="isOpen = false"
     {{ '@' . $eventToOpenModal }}.window="
-    isOpen = true
-    $nextTick(() => $refs.confirmButton.focus())
+        isOpen = true
+        $nextTick(() => $refs.confirmButton.focus())
     "
     x-init="
         Livewire.on('{{ $eventToCloseModal }}', () => {
