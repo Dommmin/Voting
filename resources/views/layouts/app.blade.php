@@ -17,19 +17,135 @@
     <body class="font-sans text-gray-900 text-sm bg-gray-background">
         <header class="flex flex-col md:flex-row items-center justify-between px-8 py-4">
             <a href="{{ route('idea.index') }}"><img src="{{ asset('img/logo.svg') }}" alt="logo"></a>
-            <div class="flex mt-2 md:mt-0 items-center">
+            <div class="flex items-center mt-2 md:mt-0 ">
                 @if (Route::has('login'))
                     <div class="px-6 py-4">
                         @auth
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
+                            <div class="flex items-center space-x-4">
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
 
-                                <a href="{{ route('logout') }}"
-                                                 onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                    {{ __('Log Out') }}
-                                </a>
-                            </form>
+                                    <a href="{{ route('logout') }}"
+                                                     onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                                        {{ __('Log Out') }}
+                                    </a>
+                                </form>
+                                <div x-data="{ isOpen: false }" class="relative">
+                                    <button @click="isOpen = !isOpen">
+                                        <svg class="h-8 w-8 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
+                                        </svg>
+                                        <div class="absolute rounded-full bg-red text-white text-xxs w-6 h-6 flex justify-center items-center border-2 -top-1 -right-1">
+                                            8
+                                        </div>
+                                    </button>
+                                    <ul
+                                        x-show.transition.origin.top="isOpen"
+                                        x-cloak
+                                        @click.away="isOpen = false"
+                                        @keydown.escape.window="isOpen = false"
+                                        class="absolute w-76 md:w-96 z-10 bg-white text-left text-sm shadow-dialog rounded-xl max-h-128  overflow-y-auto text-gray-700 -right-28 md:-right-12"
+{{--                                        style="right: -46px"--}}
+                                    >
+                                        <li>
+                                            <a
+                                                href="#"
+                                                @click.prevent="
+                                                isOpen = false
+                                                $dispatch('custom-show-edit-modal')
+                                            "
+                                                class="flex hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in"
+                                            >
+                                                <img src="https://www.gravatar.com/avatar/c6ad550c8f30082474d1e58d20f67b3a" class="rounded-xl w-10 h-10" alt="avatar">
+                                                <div class="ml-4">
+                                                    <div>
+                                                        <span class="font-semibold">drehimself</span>
+                                                    </div>
+                                                    <div class="line-clamp-6">
+                                                        <span class="font-semibold">This is my idea:</span>
+                                                        <span>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis enim impedit laudantium officia porro quaerat reprehenderit. Assumenda culpa hic ipsum laudantium odio quaerat quia quos saepe sapiente temporibus veniam, vero. Aspernatur at, aut beatae corporis debitis deserunt dolor dolorum ducimus est ex facilis inventore, ipsa molestiae numquam odio porro quas quibusdam vel voluptates, voluptatibus? Ab accusamus accusantium aut commodi dolor dolore dolorum error, eum facilis fugiat hic, id iusto, laboriosam libero maxime modi molestiae molestias nesciunt officia perferendis perspiciatis quae quod repellat repellendus saepe voluptas voluptatibus! Accusantium doloremque labore obcaecati. Cupiditate eos nesciunt nobis non, quisquam ratione sunt veniam. Voluptatibus!"</span>
+                                                    </div>
+                                                    <div class="text-xs text-gray-500 mt-2">1 hour ago</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a
+                                                href="#"
+                                                @click.prevent="
+                                                isOpen = false
+                                                $dispatch('custom-show-edit-modal')
+                                            "
+                                                class="flex hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in"
+                                            >
+                                                <img src="https://www.gravatar.com/avatar/c6ad550c8f30082474d1e58d20f67b3a" class="rounded-xl w-10 h-10" alt="avatar">
+                                                <div class="ml-4">
+                                                    <div>
+                                                        <span class="font-semibold">drehimself</span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="font-semibold">This is my idea</span>
+                                                        <span>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi cum deleniti est sit. Ab aperiam eos est magni rerum?"</span>
+                                                    </div>
+                                                    <div class="text-xs text-gray-500 mt-2">1 hour ago</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a
+                                                href="#"
+                                                @click.prevent="
+                                                isOpen = false
+                                                $dispatch('custom-show-edit-modal')
+                                            "
+                                                class="flex hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in"
+                                            >
+                                                <img src="https://www.gravatar.com/avatar/c6ad550c8f30082474d1e58d20f67b3a" class="rounded-xl w-10 h-10" alt="avatar">
+                                                <div class="ml-4">
+                                                    <div>
+                                                        <span class="font-semibold">drehimself</span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="font-semibold">This is my idea</span>
+                                                        <span>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi cum deleniti est sit. Ab aperiam eos est magni rerum?"</span>
+                                                    </div>
+                                                    <div class="text-xs text-gray-500 mt-2">1 hour ago</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a
+                                                href="#"
+                                                @click.prevent="
+                                                isOpen = false
+                                                $dispatch('custom-show-edit-modal')
+                                            "
+                                                class="flex hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in"
+                                            >
+                                                <img src="https://www.gravatar.com/avatar/c6ad550c8f30082474d1e58d20f67b3a" class="rounded-xl w-10 h-10" alt="avatar">
+                                                <div class="ml-4">
+                                                    <div>
+                                                        <span class="font-semibold">drehimself</span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="font-semibold">This is my idea</span>
+                                                        <span>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi cum deleniti est sit. Ab aperiam eos est magni rerum?"</span>
+                                                    </div>
+                                                    <div class="text-xs text-gray-500 mt-2">1 hour ago</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="border-t border-gray-300 text-center">
+                                            <button
+                                                class="w-full block font-semibold hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in py-4"
+                                            >
+                                                Mark all as read
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         @else
                             <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
