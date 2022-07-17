@@ -53,7 +53,8 @@
                                         <li>
                                             <a
                                                 href="#"
-                                                @click.prevent="isOpen = false
+                                                @click.prevent="
+                                                    isOpen = false
                                                     $dispatch('custom-show-edit-modal')
                                                 "
                                                 class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in"
