@@ -49,9 +49,8 @@
                                         <a
                                             href="#"
                                             @click.prevent="isOpen = false
-                                            Livewire.emit('setEditComment', {{ $comment->id }})
-{{--                                                    $dispatch('custom-show-edit-modal')--}}
-                                                "
+                                                Livewire.emit('setEditComment', {{ $comment->id }})
+                                            "
                                             class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in"
                                         >
                                             Edit Comment
@@ -59,8 +58,21 @@
                                     </li>
                                 @endcan
 
+                                    @can('delete', $comment)
+                                        <li>
+                                            <a
+                                                href="#"
+                                                @click.prevent="isOpen = false
+                                                    Livewire.emit('setDeleteComment', {{ $comment->id }})
+                                                "
+                                                class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in"
+                                            >
+                                                Delete Comment
+                                            </a>
+                                        </li>
+                                    @endcan
+
                                 <li><a href="#" class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in">Mark as Spam</a></li>
-                                <li><a href="#" class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in">Delete Post</a></li>
                             </ul>
                         </div>
                     </div>
