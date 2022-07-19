@@ -52,33 +52,24 @@
         x-show.transition.origin.top.left="isOpen"
         @click.away="isOpen = false"
         @keydown.escape.window="isOpen = false"
-        class="absolute z-10 w-64 md:w-104 text-left font-semibold text-sm bg-white shadow-dialog rounded-xl mt-2"
+        class="absolute z-10 w-80 md:w-104 text-left font-semibold text-sm bg-white shadow-dialog rounded-xl mt-2"
     >
         @auth
             <form wire:submit.prevent="addComment" action="#" class="space-y-4 px-4 py-6">
                 <div>
-                    <textarea x-ref="comment" wire:model="comment" name="post_comment" id="post_comment" cols="30" rows="4" class="w-full text-sm bg-gray-100 rounded-xl placeholder-gray-900 border-none px-4 py-2" placeholder="Go ahead, don't be shy. Share your thoughts ..." required></textarea>
+                    <textarea x-ref="comment" wire:model="comment" name="post_comment" id="post_comment" cols="50" rows="4" class="w-full text-sm bg-gray-100 rounded-xl placeholder-gray-900 border-none px-4 py-2" placeholder="Go ahead, don't be shy. Share your thoughts ..." required></textarea>
 
                     @error('comment')
                         <p class="text-red text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
 
-                <div class="flex flex-col md:flex-row items-center md:space-x-3">
+                <div class="flex flex-col items-center md:space-x-3">
                     <button
                         type="submit"
                         class="flex items-center justify-center h-9 w-full md:w-1/2 text-sm bg-blue font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3 text-white"
                     >
                         Post Comment
-                    </button>
-                    <button
-                        type="submit"
-                        class="flex items-center justify-center w-full md:w-32 h-9 text-xs bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 transition duration-150 ease-in px-6 py-3 mt-2 md:mt-0"
-                    >
-                        <svg class="text-gray-600 w-4 -rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
-                        </svg>
-                        <span class="ml-2"> Attach</span>
                     </button>
                 </div>
 
