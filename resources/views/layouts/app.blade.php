@@ -74,7 +74,7 @@
 
                 </div>
             </div>
-            <div class="w-full px-2 md:px-0 md:w-175">
+            <div class="w-full px-2 md:px-0 md:w-184">
                 <livewire:status-filters />
 
                 <div class="mt-8">
