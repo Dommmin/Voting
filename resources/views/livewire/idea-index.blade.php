@@ -8,7 +8,13 @@
     <div class="hidden md:block border-r border-gray-100 px-5 py-8">
         <div class="text-center">
             <div class="font-semibold text-2xl @if($hasVoted) text-blue @endif">{{ $votesCount }}</div>
-            <div class="text-gray-500">Votes</div>
+            <div class="text-gray-500">
+                @if ($votesCount === 1)
+                    Vote
+                @else
+                    Votes
+                @endif
+            </div>
         </div>
 
         <div class="mt-8">
@@ -48,7 +54,13 @@
                     <div>&bull;</div>
                     <div>{{ $idea->category->name }}</div>
                     <div>&bull;</div>
-                    <div wire:ignore class="text-gray-900">{{ $idea->comments_count }} comments</div>
+                    <div wire:ignore class="text-gray-900">
+                        @if ($idea->comments_count === 1)
+                            {{ $idea->comments_count }} comment
+                        @else
+                            {{ $idea->comments_count }} comments
+                        @endif
+                    </div>
                 </div>
                 <div
                     x-data="{ isOpen: false }"

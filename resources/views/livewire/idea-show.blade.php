@@ -26,7 +26,13 @@
                         <div>&bull;</div>
                         <div>{{ $idea->category->name }}</div>
                         <div>&bull;</div>
-                        <div class="text-gray-900">{{ $idea->comments()->count() }} comments</div>
+                        <div class="text-gray-900">
+                            @if ($idea->comments()->count() === 1)
+                                {{ $idea->comments()->count() }} comment
+                            @else
+                                {{ $idea->comments()->count() }} comments
+                            @endif
+                        </div>
                     </div>
                     <div
                         x-data="{ isOpen: false }"
@@ -112,7 +118,13 @@
                     <div class="flex items-center md:hidden mt-4 md:mt-0">
                         <div class="bg-gray-100 text-center rounded-xl h-10 px-4 py-2 pr-8">
                             <div class="text-sm font-bold leading-none @if($hasVoted) text-blue @endif">{{ $votesCount }}</div>
-                            <div class="text-xxs font-semibold leading-none text-gray-400">Votes</div>
+                            <div class="text-xxs font-semibold leading-none text-gray-400">
+                                @if ($votesCount === 1)
+                                    Vote
+                                @else
+                                    Votes
+                                @endif
+                            </div>
                         </div>
                         @if($hasVoted)
                             <button
@@ -149,7 +161,13 @@
         <div class="hidden md:flex items-center space-x-3">
             <div class="bg-white font-semibold text-center rounded-xl px-3 py-2">
                 <div class="text-xl leading-snug @if($hasVoted) text-blue @endif">{{ $votesCount }}</div>
-                <div class="text-gray-400 text-xs leading-none">Votes</div>
+                <div class="text-gray-400 text-xs leading-none">
+                    @if ($votesCount === 1)
+                        Vote
+                    @else
+                        Votes
+                    @endif
+                </div>
             </div>
             @if($hasVoted)
                 <button
